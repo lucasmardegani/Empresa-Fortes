@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+/* Estilo Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    padding-bottom: 100px; 
+}
+
+/* Cabeçalho */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15%;
+    z-index: 1000;
+}
+
+.nav-esquerda, .nav-centro, .nav-direita {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-esquerda {
+    width: 200px;
+}
+
+.nav-centro {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav-direita {
+    width: 200px;
+    justify-content: flex-end;
+}
+
+.nav-esquerda a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 300;
+    font-size: 28px;
+    transition: color 0.3s;
+}
+
+.nav-esquerda a:hover {
+    color: #cd9c4c7a;
+}
+
+.nav-centro h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+}
+
+.nav-direita img {
+    width: 180px;
+    height: auto;
+}
+
+.menu-toggle, .menu-icon {
+    display: none;
+}
+
+/* Menu Responsivo */
+@media (max-width: 768px) {
+    .menu-toggle,
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 25px;
+        left: 5%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        color: #333;
+    }
+
+    .menu-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 5%;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        z-index: 9;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle:checked ~ .menu-links {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-esquerda a {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+
+    .nav-centro h1 {
+        font-size: 28px;
+    }
+
+    .nav-direita img {
+        height: 50px;
+        width: auto;
+    }
+}
+
+/* Rodapé */
+.rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background-color: #bebebe;
+    color: #000000;
+    font-size: 13px;
+    text-align: center;
+    z-index: 999;
+}
+
+.rodape .redes {
+    margin-bottom: 10px;
+}
+
+.rodape .redes a {
+    margin: 0 10px;
+    color: #000000;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.rodape .redes a:hover {
+    color: #444444;
+    transform: scale(1.2);
+}
