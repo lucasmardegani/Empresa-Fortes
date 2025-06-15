@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Painel Administrador - Fortes</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5e9;
+            margin: 0;
+            padding: 20px;
+            color: #2e7d32;
+        }
+        header {
+            border-bottom: 2px solid #2e7d32;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        .content {
+            font-size: 18px;
+        }
+        .btn-logout {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-logout:hover {
+            background-color: #1b4d23;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Painel do Administrador</h1>
+    </header>
+    <div class="content">
+        <p>Bem-vindo, Administrador!</p>
+        <p>Aqui você pode gerenciar a plataforma, visualizar relatórios e administrar usuários.</p>
+
+        <button class="btn-logout" onclick="logout()">Sair</button>
+    </div>
+
+    <script>
+        function logout() {
+            // Redireciona para a página de login ao clicar em sair
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

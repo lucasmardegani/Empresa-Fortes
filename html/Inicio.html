@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Imagens/" type="image/x-icon">
+    <link rel="shortcut icon" href="../imagens/Logo.png" type="image/x-icon">
     <title>Empresa Fortes</title>
     
     <!-- Google Fonts -->
@@ -18,35 +18,126 @@
 </head>
 <body>
 
-<header class="inicial"> <!-- header -->
+<header class="inicial"> <!-- Header -->
   <nav class="navbar">
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">
-      <i class="fas fa-bars"></i>
-    </label>
-
-    <div class="nav-esquerda menu-links">
-      <a href="materiais.html">Materiais</a>
-      <a href="">Contato</a>
+    
+    <!-- Lado Esquerdo: Logo -->
+    <div class="nav-esquerda">
+      <a href="#">
+        <img src="../Imagens/Logo.png" alt="Logo da Empresa">
+      </a>
     </div>
 
+    <!-- Centro: Nome da Empresa -->
     <div class="nav-centro">
       <h1>Empresa Fortes</h1>
     </div>
 
+    <!-- Direita: Ícone com Opções -->
     <div class="nav-direita">
-      <a href="">
-        <img src="../Imagens/" alt="Logo">
-      </a>
-    </div>
+     <div class="menu-user">
+  <i class="fas fa-user-circle"></i>
+  <div class="menu-opcoes">
+    <div class="seta"></div>
+    <a href="login.html">Entrar</a>
+  </div>
+</div>
+
   </nav>
 </header>
 
 <main>
 
+<section class="section-apresentacao"> <!-- Apresentação -->
+    <div class="conteudo-apresentacao">
+      <div class="texto-apresentacao">
+        <h2>Bem-vindo à Fortes</h2>
+        <p>
+          Nossa plataforma foi criada para transformar a gestão de ações sociais e reciclagem de resíduos. Aqui, unimos tecnologia e responsabilidade socioambiental para fazer a diferença na comunidade.
+        </p>
+      </div>
+      <div class="imagem-apresentacao">
+        <img src="../imagens/lixo_reciclavel_1024x1024.webp" alt="Reciclagem e Ações Sociais" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-opcoes"> <!-- Opcoes -->
+  <div class="linha"></div>
+  <h2>Entenda as Causas</h2>
+  <div class="opcoes">
+    <button onclick="mostrarConteudo('opcao1')">Reciclagem</button>
+    <button onclick="mostrarConteudo('opcao2')">Ações Sociais</button>
+    <button onclick="mostrarConteudo('opcao3')">Impacto Ambiental</button>
+  </div>
+
+  <div class="conteudos">
+    <div id="opcao1" class="conteudo-opcao">
+      <img src="../imagens/latinhas de aluminio.jpeg" alt="Reciclagem">
+      <p>A reciclagem transforma resíduos em novos produtos, ajudando o meio ambiente.</p>
+    </div>
+
+    <div id="opcao2" class="conteudo-opcao">
+      <img src="../imagens/OIP.jpeg" alt="Ações Sociais">
+      <p>As ações sociais promovem inclusão, sustentabilidade e impacto positivo na comunidade.</p>
+    </div>
+
+    <div id="opcao3" class="conteudo-opcao">
+      <img src="../imagens/reciclagem 2.png" alt="Impacto Ambiental">
+      <p>Reduzir o impacto ambiental é essencial para o futuro das próximas gerações.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-destaque"> <!-- Destaque -->
+    <h2>Nossa Missão</h2>
+    <p>Conectar pessoas e promover a sustentabilidade através de ações de reciclagem inteligentes e responsáveis.</p>
+
+    <div class="cards-container">
+        <div class="card">
+            <h3>Coletas Programadas</h3>
+            <p>Agende e acompanhe as datas de coletas de materiais recicláveis em sua região.</p>
+        </div>
+
+        <div class="card">
+            <h3>Benefícios aos Cooperados</h3>
+            <p>Ganhe recompensas e acompanhe o seu impacto positivo no meio ambiente.</p>
+        </div>
+
+        <div class="card">
+            <h3>Transparência nos Resultados</h3>
+            <p>Veja relatórios e métricas sobre a quantidade de material coletado e reciclado.</p>
+        </div>
+    </div>
+</section>
+
+<section class="reciclgame-section"> <!-- Reciclagem -->
+  <div class="container">
+    <div class="image-wrapper">
+      <img src="../imagens/shutterstock_731239045.jpg" alt="ReciclGame">
+    </div>
+    <div class="text-wrapper">
+      <h2>Conectando Você à Economia Circular</h2>
+      <p>
+        Nosso site oferece uma plataforma completa para facilitar a coleta seletiva na sua região, conectando você a pontos de coleta, oferecendo informações práticas e atualizadas sobre reciclagem e permitindo que você acompanhe seu impacto ambiental. Além disso, possibilita que você receba recompensas financeiras ao transformar seus resíduos em benefícios reais, tudo isso de forma simples, segura e acessível. Descubra como a tecnologia pode ajudar a cuidar do planeta e ainda gerar valor para você.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section-informativa"> <!-- Informativa -->
+    <div class="conteudo-informativo">
+        <h2>Junte-se à Sustentabilidade</h2>
+        <p>Faça a diferença! Separe seus resíduos, colabore com o meio ambiente e contribua para uma cidade mais limpa e consciente.</p>
+    </div>
+    <div class="imagem-informativa">
+        <img src="../imagens/OIP (1).jpeg" alt="Imagem sobre sustentabilidade">
+    </div>
+</section>
+
 </main>
 
-<footer class="rodape container"> <!-- footer -->
+<footer class="rodape container"> <!-- Footer -->
   <div class="redes">
     <a href="" target="_blank"><i class="fab fa-facebook-f"></i></a>
     <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -55,5 +146,6 @@
   <p>&copy; 2025 Empresa Fortes. Todos os direitos reservados.</p>
 </footer>
 
+<script src="../js/inicio.js"></script>
 </body>
 </html>

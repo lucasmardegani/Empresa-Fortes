@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Painel Cooperado - Fortes</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f8e9;
+            margin: 0;
+            padding: 20px;
+            color: #558b2f;
+        }
+        header {
+            border-bottom: 2px solid #558b2f;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        .content {
+            font-size: 18px;
+        }
+        .btn-logout {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #558b2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-logout:hover {
+            background-color: #3e621f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Painel do Cooperado</h1>
+    </header>
+    <div class="content">
+        <p>Bem-vindo, Cooperado!</p>
+        <p>Aqui você pode acompanhar suas ações, entregas e histórico.</p>
+
+        <button class="btn-logout" onclick="logout()">Sair</button>
+    </div>
+
+    <script>
+        function logout() {
+            // Redireciona para a página de login ao clicar em sair
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
