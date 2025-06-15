@@ -1,65 +1,502 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Painel Administrador - Fortes</title>
-    <link rel="stylesheet" href="../css/painel-admin.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa Fortes - Painel Administrativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 2px solid #2e7d32;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            color: #2e7d32;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .btn-logout {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-logout:hover {
+            background-color: #1b5e20;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: linear-gradient(to bottom, #2e7d32, #1b5e20);
+            color: white;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .brand {
+            text-align: center;
+            padding: 20px 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .brand h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .brand p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0 15px;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .menu-item i {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            color: #2e7d32;
+            margin-bottom: 5px;
+        }
+
+        .campaign-slogan {
+            font-size: 1.3rem;
+            color: #4caf50;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #2e7d32;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c8e6c9;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: #2e7d32;
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .table-header {
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-bottom: 1px solid #c8e6c9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #2e7d32;
+            color: white;
+            text-align: left;
+            padding: 16px 20px;
+            font-weight: 500;
+        }
+
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f1f8e9;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #2e7d32;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .deadline {
+            background-color: #ff6f00;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Campaign Details */
+        .campaign-details {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .detail-item {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .description-box {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .description-label {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .sidebar {
+                width: 70px;
+                overflow: hidden;
+            }
+            
+            .brand, .menu-item span {
+                display: none;
+            }
+            
+            .menu-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                padding: 10px;
+                display: flex;
+                overflow-x: auto;
+            }
+            
+            .brand {
+                display: none;
+            }
+            
+            .menu {
+                display: flex;
+                gap: 5px;
+            }
+            
+            .menu-item {
+                padding: 10px 15px;
+                margin-bottom: 0;
+                white-space: nowrap;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Painel do Administrador</h1>
-        <button class="btn-logout" onclick="logout()">Sair</button>
-    </header>    
-    <section class="opcoes-container">
-        <h2>Opcões de Gerenciamento</h2>
-    <div class="opcoes">
-        <button onclick="mostrarConteudo('opcao1')">Usuários</button>
-        <button onclick="mostrarConteudo('opcao2')">Relatórios</button>
-        <button onclick="mostrarConteudo('opcao3')">Configurações do Sistema</button>
-        <button onclick="mostrarConteudo('opcao4')">Comunicação e Suporte</button>
+        <button class="btn-logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Sair
+        </button>
+    </header>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>Empresa Fortes</h2>
+                <p>Público-alvo</p>
+            </div>
+            
+            <ul class="menu">
+                <li class="menu-item active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Painel</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Postagens</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-photo-video"></i>
+                    <span>Mídia</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Seghas</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-comments"></i>
+                    <span>Comentários</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Personalizar</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-plug"></i>
+                    <span>Plugins</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Usuários</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-tools"></i>
+                    <span>Ferramentas</span>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </li>
+            </ul>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Cadeia Cidadã</h1>
+                <p class="campaign-slogan">Recicle Hoje, Mude o Amanhã</p>
+            </div>
+            
+            <h2 class="section-title">Itens de Ação</h2>
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Lista de tarefas da campanha</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item de ação</th>
+                            <th>Equipe</th>
+                            <th>Prazo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Inadequante da ordem em participação externa</td>
+                            <td>
+                                <div class="team-member">
+                                    <div class="avatar">R</div>
+                                    Robert Evans
+                                </div>
+                            </td>
+                            <td><span class="deadline"><i class="fas fa-clock"></i> 10000088</span></td>
+                        </tr>
+                        <tr>
+                            <td>Designe a campanha nas redes sociais e grupos da banca</td>
+                            <td>
+                                <div class="team-member">
+                                    <div class="avatar">D</div>
+                                    Diana Towers
+                                </div>
+                            </td>
+                            <td><span class="deadline"><i class="fas fa-clock"></i> 10000088</span></td>
+                        </tr>
+                        <tr>
+                            <td>Agrade a população na multidão habitual com porta da educativa</td>
+                            <td>
+                                <div class="team-member">
+                                    <div class="avatar">L</div>
+                                    Louis Costa
+                                </div>
+                            </td>
+                            <td><span class="deadline"><i class="fas fa-clock"></i> 11000088</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h2 class="section-title">Detalhes da Campanha</h2>
+            <div class="campaign-details">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Nome da campanha</div>
+                        <div class="detail-value">Recicle é Apende</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Líder de campanha</div>
+                        <div class="detail-value">Natalia Cruz</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Equipe</div>
+                        <div class="detail-value">- Da Tailidade</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Aprendentes</div>
+                        <div class="detail-value">- Vista! La!</div>
+                    </div>
+                </div>
+                
+                <div class="description-box">
+                    <span class="description-label">Descrição</span>
+                    <p>Instituto instituto para escolas municipal com Trois ou Municípios. A campanha inclui palestras, projetos e aprendizagem para um grupo de trabalhadores. Dados com as separações e atenção entre seus estudos.</p>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="conteudo-opcoes">
-        <div id="opcao1" class="opcao-conteudo">
-            <h2>Gerenciamento de Usuários</h2>
-            <p>Aqui você pode adicionar, remover ou editar usuários da plataforma.</p>
-        </div>
-        <div id="opcao2" class="opcao-conteudo">
-            <h2>Relatórios</h2>
-            <p>Visualize relatórios de ações sociais e reciclagem.</p>
-        </div>
-        <div id="opcao3" class="opcao-conteudo">
-            <h2>Configurações do Sistema</h2>
-            <p>Gerencie as configurações gerais da plataforma.</p>
-        </div>
-        <div id="opcao4" class="opcao-conteudo">
-            <h2>Comunicação e Suporte</h2>
-            <p>Entre em contato com a equipe de suporte ou visualize as perguntas frequentes.</p>
-        </div>
-</section>
-    
-    
-    
     
     <script>
         function logout() {
-            // Redireciona para a página de login ao clicar em sair
-            window.location.href = 'login.html';
+            if(confirm('Tem certeza que deseja sair do painel?')) {
+                alert('Sessão encerrada com sucesso!');
+                // Redirecionar para a página de login
+                window.location.href = 'login.html';
+            }
         }
-    function mostrarConteudo(id) {
-        const conteudos = document.querySelectorAll('.opcao-conteudo');
-        conteudos.forEach(function(conteudo) {
-        conteudo.style.display = 'none';
+        
+        // Adicionar evento de clique aos itens do menu
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.menu-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
         });
-
-        const selecionado = document.getElementById(id);
-        if (selecionado) {
-        selecionado.style.display = 'block';
-    }
-}
-document.addEventListener('DOMContentLoaded', function() {
-    mostrarConteudo('opcao1');
-});
     </script>
 </body>
 </html>
